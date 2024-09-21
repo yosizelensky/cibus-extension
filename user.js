@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Cibus extension
 // @namespace   Violentmonkey Scripts
-// @match       https://consumers.pluxee.co.il/user/friends
+// @match       https://consumers.pluxee.co.il/*
 // @grant       none
 // @version     1.0
 // @author      -
@@ -65,23 +65,28 @@ async function addDomain(domain) {
 }
 
 async function addEveryone() {
-    console.log("Adding everyone");
     await addDomain("wiz");
     await addDomain("com");
 }
 
-function main() {
-    var friends = document.querySelector(".cib-btn");
-    if (friends == null) {
-        console.log("Cannot find the friends button");
-        return
-    }
+async function main() {
+    while (true) {
+        await sleep(1000);
+        if (document.querySelector("#addEveryoneButton") != null) {
+            continue
+        }
 
-    var addEveryoneButton = friends.cloneNode(true);
-    addEveryoneButton.textContent = "להוספת כל החברים";
-    addEveryoneButton.onclick = addEveryone
-    friends.insertAdjacentElement("afterend", addEveryoneButton);
-    console.log("Found the friends button");
+        var friends = document.querySelector(".cib-btn");
+        if (friends == null || friends.textContent.trim() != "להוספת חברים") {
+            continue
+        }
+
+        var addEveryoneButton = friends.cloneNode(true);
+        addEveryoneButton.id = "addEveryoneButton";
+        addEveryoneButton.textContent = "להוספת כל החברים";
+        addEveryoneButton.onclick = addEveryone
+        friends.insertAdjacentElement("afterend", addEveryoneButton);
+    }
 }
 
-setTimeout(main, 3000);
+main()
