@@ -41,7 +41,6 @@ async function addDomain(domain) {
         var users = document.querySelectorAll("#user-add")
         if (users.length == 0) {
             console.log("No users found");
-            document.querySelector(".search-panel > a").click()
             break
         }
 
@@ -53,6 +52,15 @@ async function addDomain(domain) {
 
         confirmButton.click();
         await sleep(1000);
+
+        if (users.length < 10) {
+            break
+        }
+    }
+
+    var xButton = document.querySelector(".search-panel > a")
+    if (xButton != null) {
+        xButton.click()
     }
 }
 
