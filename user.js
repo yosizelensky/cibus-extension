@@ -36,7 +36,7 @@ async function addDomain(domain) {
     input.value = domain;
     input.dispatchEvent(new Event("input", { bubbles: true }));
 
-    await sleep(1000);
+    await sleep(2000);
 
     var users = document.querySelectorAll("#user-add");
     if (users.length == 0) {
