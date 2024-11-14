@@ -65,7 +65,7 @@ async function addDomain(domain) {
 }
 
 async function addEveryone() {
-  await addDomain("wiz");
+  await addDomain("groundcover");
   await addDomain("com");
 }
 
