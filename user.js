@@ -38,7 +38,7 @@ async function addDomain(domain) {
 
     await sleep(2000);
 
-    var users = document.querySelectorAll("#user-add");
+    var users = document.querySelectorAll(".friends-add");
     if (users.length == 0) {
       console.log("No users found");
       break;
