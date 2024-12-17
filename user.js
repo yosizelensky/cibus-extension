@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://consumers.pluxee.co.il/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      -
 // @description 20/09/2024, 15:19:45
 // ==/UserScript==
